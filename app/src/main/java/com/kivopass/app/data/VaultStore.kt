@@ -118,11 +118,14 @@ class VaultStore(context: Context) {
     }
 
     /** null si la clave quedó invalidada (cambio de huellas). */
-    fun bioDecryptCipher(): Cipher? = try {
-        KeystoreHelper.bioDecryptCipher(unb64(prefs.getString("bio_iv", null) ?: return null))
-    } catch (e: Exception) {
-        bioDisable()
-        null
+    fun bioDecryptCipher(): Cipher? {
+        return try {
+            val iv = prefs.getString("bio_iv", null) ?: return null
+            KeystoreHelper.bioDecryptCipher(unb64(iv))
+        } catch (e: Exception) {
+            bioDisable()
+            null
+        }
     }
 
     fun bioFinishUnlock(cipher: Cipher): ByteArray =
