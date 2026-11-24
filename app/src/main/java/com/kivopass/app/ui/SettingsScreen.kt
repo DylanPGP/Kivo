@@ -49,8 +49,8 @@ fun SettingsScreen(model: AppModel, activity: FragmentActivity) {
         Column(Modifier.padding(horizontal = 16.dp)) {
             SectionTitle(tr("Idioma", "Language"))
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                FilterChip(selected = lang == "es", onClick = { model.setLang("es") }, label = { Text("Español") })
-                FilterChip(selected = lang == "en", onClick = { model.setLang("en") }, label = { Text("English") })
+                FilterChip(selected = lang == "es", onClick = { model.changeLang("es") }, label = { Text("Español") })
+                FilterChip(selected = lang == "en", onClick = { model.changeLang("en") }, label = { Text("English") })
             }
 
             SectionTitle(tr("Seguridad", "Security"))

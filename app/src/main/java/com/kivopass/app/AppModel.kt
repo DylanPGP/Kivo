@@ -43,7 +43,7 @@ class AppModel(context: Context) {
 
     private fun s(es: String, en: String) = if (lang == "es") es else en
 
-    fun setLang(value: String) {
+    fun changeLang(value: String) {
         lang = value
         store.lang = value
     }
